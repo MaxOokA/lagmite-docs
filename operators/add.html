@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>[+] Addition</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="sidebar"><a href="../index.html">← Back</a></div>
+<div class="main">
+<h1>[+] Addition</h1>
+
+<h2>Definition</h2>
+<p>Performs numeric addition, string concatenation, or boolean OR.</p>
+
+<h2>Type Signatures</h2>
+<pre>
+(INT, INT) → INT
+(DEC, DEC) → DEC
+(INT, DEC) → DEC
+(STR, STR) → STR
+(BOO, BOO) → BOO
+</pre>
+
+<h2>Semantics</h2>
+<p>
+Numeric values are added. Strings are concatenated. Booleans perform logical OR.
+</p>
+
+<h2>Examples</h2>
+<pre>
+[+]-[5][3] → 8
+[+]-["A"]["B"] → "AB"
+[+]-[TRUE][FALSE] → TRUE
+</pre>
+
+</div>
+</body>
+</html>
