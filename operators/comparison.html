@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Comparison Operators</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <a href="../index.html">← Back</a>
+</div>
+
+<div class="main">
+
+<h1>Comparison Operators</h1>
+
+<h2>Overview</h2>
+<p>
+Comparison operators evaluate relationships between values and return <b>BOO</b>.
+</p>
+
+---
+
+<h2>Numeric Comparison</h2>
+
+<h3>Type Signature</h3>
+<pre>
+(NUM, NUM) → BOO
+NUM ∈ {INT, DEC}
+</pre>
+
+<h3>Operators</h3>
+
+<h4>[>] Greater Than</h4>
+<pre>[>]-[5][3] → TRUE</pre>
+
+<h4>[<] Less Than</h4>
+<pre>[<]-[3][5] → TRUE</pre>
+
+<h4>[>=] Greater or Equal</h4>
+<pre>[>=]-[5][5] → TRUE</pre>
+
+<h4>[<=] Less or Equal</h4>
+<pre>[<=]-[3][5] → TRUE</pre>
+
+---
+
+<h2>Equality Comparison</h2>
+
+<h3>Type Signature</h3>
+<pre>
+(T, T) → BOO
+</pre>
+
+<h4>[==] Equality</h4>
+<pre>[==]-[5][5] → TRUE</pre>
+
+<h4>[!=] Inequality</h4>
+<pre>[!=]-[5][3] → TRUE</pre>
+
+---
+
+<h2>Semantics</h2>
+<ul>
+<li>Numeric comparisons require INT or DEC</li>
+<li>Equality requires matching types</li>
+<li>If types differ:
+    <ul>
+        <li><code>==</code> → FALSE</li>
+        <li><code>!=</code> → TRUE</li>
+    </ul>
+</li>
+</ul>
+
+</div>
+
+</body>
+</html>
