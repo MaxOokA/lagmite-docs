@@ -11,41 +11,94 @@
 
 <body>
 
+<!-- Sidebar -->
 <div class="sidebar">
 
-    <h2>Lagmite Docs</h2>
+    <h2>Lagmite</h2>
 
     <input id="search" placeholder="Search operators...">
 
     <div id="results"></div>
 
+    <hr>
+
+    <div>
+        <b>Quick Links</b>
+        <a href="operators/add.html">+ Addition</a>
+        <a href="operators/sub.html">- Subtraction</a>
+        <a href="operators/mul.html">* Multiplication</a>
+        <a href="operators/div.html">/ Division</a>
+        <a href="operators/boolean.html">Boolean</a>
+        <a href="operators/comparison.html">Comparison</a>
+        <a href="operators/assign.html">Assignment</a>
+    </div>
+
 </div>
 
+<!-- Main -->
 <div class="main">
 
-    <h1>Lagmite Language Documentation</h1>
+    <!-- Header -->
+    <header>
+        <h1>Lagmite Language</h1>
+        <p>
+            A symbolic, expression-based programming language focused on strict typing and explicit operations.
+        </p>
+    </header>
 
-    <p>
-        Welcome to the Lagmite specification.
-    </p>
+    <hr>
 
-    <p>
-        Use the search bar to quickly find operators, conversions, and system functions.
-    </p>
-
-    <h2>Quick Start</h2>
+    <!-- Quick Example -->
+    <section>
+        <h2>Quick Example</h2>
 <pre>
 [=]-[a][10]
-[/DSP/]-[${[+]-[a][5]}]
-</pre>
+[=]-[b][20]
 
-    <h2>Structure</h2>
-    <ul>
-        <li>Arithmetic operators</li>
-        <li>Boolean operators</li>
-        <li>Comparison operators</li>
-        <li>System operations (assignment, display, conversion)</li>
-    </ul>
+[/DSP/]-[${[+]-[a][b]}]   → 30
+</pre>
+    </section>
+
+    <!-- Key Features -->
+    <section>
+        <h2>Core Principles</h2>
+        <ul>
+            <li>No implicit type conversion</li>
+            <li>Strict operator-based syntax</li>
+            <li>Explicit evaluation using ${...}</li>
+            <li>Deterministic execution</li>
+        </ul>
+    </section>
+
+    <!-- Navigation Guide -->
+    <section>
+        <h2>Documentation Structure</h2>
+        <ul>
+            <li><b>Arithmetic</b> → +, -, *, /, %, ^, R</li>
+            <li><b>Boolean</b> → logical operations</li>
+            <li><b>Comparison</b> → relational operators</li>
+            <li><b>System</b> → assignment, display, conversion</li>
+        </ul>
+    </section>
+
+    <!-- Usage Hint -->
+    <section>
+        <h2>How to Use This Site</h2>
+        <ul>
+            <li>Use the search bar to locate operators instantly</li>
+            <li>Click any result to navigate to its full specification</li>
+            <li>Use the sidebar quick links for common operations</li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Lagmite Documentation — Version 0.1
+        </p>
+    </footer>
 
 </div>
 
