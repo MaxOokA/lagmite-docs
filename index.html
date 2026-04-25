@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lagmite Language Documentation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --bg: #0f172a;
+    --panel: #020617;
+    --text: #e2e8f0;
+    --accent: #38bdf8;
+    --green: #22c55e;
+    --yellow: #facc15;
+    --border: #334155;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    color: var(--accent);
+    margin-top: 0;
+}
+
+.sidebar a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.sidebar a:hover {
+    background: rgba(56,189,248,0.1);
+}
+
+.sidebar a.active {
+    background: var(--accent);
+    color: black;
+}
+
+/* Main */
+.main {
+    margin-left: 260px;
+    padding: 30px;
+    max-width: 900px;
+}
+
+/* Sections */
+section {
+    margin-bottom: 60px;
+}
+
+h1 {
+    color: var(--accent);
+}
+
+h2 {
+    color: var(--green);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
+}
+
+/* Code */
+code {
+    background: var(--panel);
+    padding: 2px 6px;
+    border-radius: 6px;
+    color: var(--yellow);
+}
+
+pre {
+    background: var(--panel);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+/* Lists */
+ul {
+    padding-left: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Lagmite</h2>
+    <a href="#overview">Overview</a>
+    <a href="#syntax">Core Syntax</a>
+    <a href="#types">Data Types</a>
+    <a href="#arithmetic">Arithmetic</a>
+    <a href="#boolean">Boolean</a>
+    <a href="#comparison">Comparison</a>
+    <a href="#conversion">Conversion</a>
+    <a href="#expressions">Expressions</a>
+    <a href="#example">Example</a>
+    <a href="#rules">Rules</a>
+    <a href="#errors">Error Handling</a>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+
+<h1>Lagmite Language Documentation</h1>
+
+<section id="overview">
+<h2>Overview</h2>
+<p>
+Lagmite is a symbolic, bracket-based programming language focused on strict structure and clarity.
+All operations are written in a consistent format and evaluated line-by-line.
+</p>
+</section>
+
+<section id="syntax">
+<h2>Core Syntax</h2>
+<p>All operations follow this structure:</p>
+<pre>[OPERATOR]-[argument1][argument2]</pre>
+
+<pre>
+[=]-[a][10]       // assign variable
+*[=]-[b][20]      // immutable variable
+[/DSP/]-[a]       // display value
+</pre>
+</section>
+
+<section id="types">
+<h2>Data Types</h2>
+<ul>
+<li><code>INT</code> → Integer</li>
+<li><code>DEC</code> → Decimal</li>
+<li><code>STR</code> → String</li>
+<li><code>BOO</code> → Boolean (TRUE / FALSE)</li>
+</ul>
+</section>
+
+<section id="arithmetic">
+<h2>Arithmetic Operations</h2>
+<pre>
+[+]-[a][b]
+[-]-[a][b]
+[*]-[a][b]
+[/]-[a][b]
+[%]-[a][b]
+[^]-[a][b]
+[R]-[n][x]   // nth root
+</pre>
+</section>
+
+<section id="boolean">
+<h2>Boolean Operations</h2>
+<pre>
+[&]-[a][b]
+[!&]-[a][b]
+[!+]-[a][b]
+[X+]-[a][b]
+[X!+]-[a][b]
+[!]-[a]
+</pre>
+</section>
+
+<section id="comparison">
+<h2>Comparison Operations</h2>
+<pre>
+[>]-[a][b]
+[<]-[a][b]
+[>=]-[a][b]
+[<=]-[a][b]
+[==]-[a][b]
+[!=]-[a][b]
+</pre>
+</section>
+
+<section id="conversion">
+<h2>Type Conversion</h2>
+<p>Format:</p>
+<pre>[/CNV/]:[FROM]:[TO]-[value]</pre>
+
+<pre>
+[/CNV/]:[INT]:[DEC]-[a]
+[/CNV/]:[STR]:[INT]-["123"]
+</pre>
+</section>
+
+<section id="expressions">
+<h2>Nested Expressions</h2>
+<p>Use <code>${...}</code> to evaluate expressions inside expressions:</p>
+
+<pre>
+[/DSP/]-[${[+]-[a][b]}]
+</pre>
+</section>
+
+<section id="example">
+<h2>Example Program</h2>
+<pre>
+[=]-[a][10]
+[=]-[b][20]
+*[=]-[c][5]
+
+[/DSP/]-[${[+]-[a][b]}]
+[/DSP/]-[${[*]-[a][c]}]
+</pre>
+</section>
+
+<section id="rules">
+<h2>Rules & Notes</h2>
+<ul>
+<li>All syntax must follow strict bracket structure</li>
+<li>Variables must be defined before use</li>
+<li>Immutable variables cannot be reassigned</li>
+<li>Expressions must have correct argument counts</li>
+<li>Conversions must be valid</li>
+</ul>
+</section>
+
+<section id="errors">
+<h2>Error Handling</h2>
+<p>
+Lagmite uses a unified error message system. Instead of detailed diagnostics,
+a general message is displayed whenever an error occurs.
+</p>
+</section>
+
+</div>
+
+<script>
+const sections = document.querySelectorAll("section");
+const links = document.querySelectorAll(".sidebar a");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+        const top = section.offsetTop;
+        if (scrollY >= top - 120) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    links.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
