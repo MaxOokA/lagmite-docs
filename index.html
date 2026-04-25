@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lagmite Language Specification</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: #000;
+    color: #00ff9c;
+    font-family: 'IBM Plex Mono', monospace;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid #00ff9c33;
+    padding: 15px;
+}
+
+.sidebar a {
+    display: block;
+    color: #00ff9c;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.sidebar a:hover {
+    background: #00ff9c22;
+}
+
+/* Main */
+.main {
+    padding: 20px;
+    max-width: 900px;
+}
+
+/* Sections */
+section {
+    margin-bottom: 60px;
+}
+
+h1, h2, h3 {
+    color: #00ffaa;
+}
+
+pre {
+    background: #001a12;
+    padding: 10px;
+    border-left: 3px solid #00ff9c;
+}
+
+code {
+    color: #00ffaa;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<b>Lagmite Spec</b>
+<a href="#intro">1. Introduction</a>
+<a href="#syntax">2. Syntax</a>
+<a href="#types">3. Types</a>
+<a href="#evaluation">4. Evaluation</a>
+<a href="#operators">5. Operators</a>
+<a href="#conversion">6. Conversion</a>
+<a href="#variables">7. Variables</a>
+<a href="#errors">8. Errors</a>
+</div>
+
+<div class="main">
+
+<h1>Lagmite Language Specification</h1>
+
+<section id="intro">
+<h2>1. Introduction</h2>
+<p>
+Lagmite is a symbolic, expression-oriented programming language. All computations are represented as bracketed operator expressions.
+Execution proceeds sequentially, evaluating one statement per line.
+</p>
+</section>
+
+<section id="syntax">
+<h2>2. Syntax</h2>
+
+<h3>2.1 General Form</h3>
+<pre>[OPERATOR]-[ARG1][ARG2]</pre>
+
+<h3>2.2 Nested Expressions</h3>
+<pre>${ expression }</pre>
+
+<h3>2.3 Literals</h3>
+<ul>
+<li>Integer: <code>10</code></li>
+<li>Decimal: <code>10.5</code></li>
+<li>String: <code>"text"</code></li>
+<li>Boolean: <code>TRUE</code>, <code>FALSE</code></li>
+</ul>
+</section>
+
+<section id="types">
+<h2>3. Types</h2>
+
+<p>Lagmite defines four primitive types:</p>
+
+<ul>
+<li><b>INT</b> — Integer</li>
+<li><b>DEC</b> — Decimal</li>
+<li><b>STR</b> — String</li>
+<li><b>BOO</b> — Boolean</li>
+</ul>
+
+<h3>3.1 Type Promotion</h3>
+<p>
+Operations involving INT and DEC yield DEC unless both operands are INT.
+</p>
+</section>
+
+<section id="evaluation">
+<h2>4. Evaluation</h2>
+
+<p>
+Expressions are evaluated recursively. Sub-expressions inside <code>${...}</code> are evaluated before the enclosing expression.
+</p>
+
+<p>
+Evaluation is strict and does not perform implicit conversions.
+</p>
+</section>
+
+<section id="operators">
+<h2>5. Operators</h2>
+
+<h3>5.1 Arithmetic</h3>
+
+<pre>
++ : (INT|DEC, INT|DEC) → INT|DEC
+- : (INT|DEC, INT|DEC) → INT|DEC
+* : (INT|DEC, INT|DEC) → INT|DEC
+/ : (INT|DEC, INT|DEC) → DEC
+% : (INT, INT) → INT
+^ : (INT|DEC, INT|DEC) → INT|DEC
+R : (INT|DEC, INT|DEC) → INT|DEC
+</pre>
+
+<p>Special cases:</p>
+<ul>
+<li><code>+</code> on STR performs concatenation</li>
+<li><code>*</code> supports STR × INT repetition</li>
+<li><code>+</code> on BOO performs logical OR</li>
+</ul>
+
+<h3>5.2 Boolean</h3>
+
+<pre>
+&    : (BOO, BOO) → BOO
+!&   : (BOO, BOO) → BOO
+!+   : (BOO, BOO) → BOO
+X+   : (BOO, BOO) → BOO
+X!+  : (BOO, BOO) → BOO
+!    : (BOO) → BOO
+</pre>
+
+<h3>5.3 Comparison</h3>
+
+<pre>
+>  : (NUM, NUM) → BOO
+<  : (NUM, NUM) → BOO
+>= : (NUM, NUM) → BOO
+<= : (NUM, NUM) → BOO
+== : (T, T) → BOO
+!= : (T, T) → BOO
+</pre>
+
+<p>Where NUM ∈ {INT, DEC}</p>
+
+</section>
+
+<section id="conversion">
+<h2>6. Conversion</h2>
+
+<h3>6.1 Syntax</h3>
+<pre>[/CNV/]:[FROM]:[TO]-[value]</pre>
+
+<h3>6.2 Valid Conversions</h3>
+<pre>
+INT ↔ DEC
+INT ↔ STR
+STR → BOO
+STR ↔ DEC
+</pre>
+
+<p>Conversions are explicit and must match declared source type.</p>
+
+</section>
+
+<section id="variables">
+<h2>7. Variables</h2>
+
+<h3>7.1 Assignment</h3>
+<pre>[=]-[name][value]</pre>
+
+<h3>7.2 Immutable Assignment</h3>
+<pre>*[=]-[name][value]</pre>
+
+<p>Immutable variables cannot be reassigned after initialization.</p>
+
+<h3>7.3 Lookup</h3>
+<p>Variables are referenced by name.</p>
+
+</section>
+
+<section id="errors">
+<h2>8. Errors</h2>
+
+<p>
+Lagmite implementations must produce a general error message for all runtime and validation failures.
+Specific error diagnostics are not exposed.
+</p>
+
+<p>
+Execution terminates immediately upon encountering an error.
+</p>
+</section>
+
+</div>
+
+</body>
+</html>
