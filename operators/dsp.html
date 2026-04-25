@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>[/DSP/] Display</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <a href="../index.html">← Back</a>
+</div>
+
+<div class="main">
+
+<h1>[/DSP/] Display</h1>
+
+<h2>Definition</h2>
+<p>
+Evaluates an expression and outputs its value to the console.
+</p>
+
+<h2>Syntax</h2>
+<pre>
+[/DSP/]-[expression]
+</pre>
+
+<h2>Semantics</h2>
+<ul>
+<li>The expression is evaluated</li>
+<li>The result is converted to a printable form</li>
+<li>The value is written to standard output</li>
+<li>No value is returned</li>
+</ul>
+
+<h2>Output Formatting</h2>
+
+<h3>INT</h3>
+<pre>
+Printed as integer
+</pre>
+
+<h3>DEC</h3>
+<ul>
+<li>Trailing zeros are removed</li>
+<li>If value is integral → shown with .0</li>
+</ul>
+
+<h3>STR</h3>
+<pre>
+Printed without quotes
+</pre>
+
+<h3>BOO</h3>
+<pre>
+TRUE or FALSE
+</pre>
+
+<h2>Examples</h2>
+<pre>
+[/DSP/]-[10] → 10
+[/DSP/]-[10.500] → 10.5
+[/DSP/]-[TRUE] → TRUE
+[/DSP/]-["Hello"] → Hello
+
+[/DSP/]-[${[+]-[5][5]}] → 10
+</pre>
+
+<h2>Notes</h2>
+<ul>
+<li>Display does not modify program state</li>
+<li>Errors during evaluation stop execution</li>
+</ul>
+
+</div>
+
+</body>
+</html>
