@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>[/CNV/] Conversion</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <a href="../index.html">← Back</a>
+</div>
+
+<div class="main">
+
+<h1>[/CNV/] Conversion</h1>
+
+<h2>Definition</h2>
+<p>
+Performs explicit type conversion from one type to another.
+</p>
+
+<h2>Syntax</h2>
+<pre>
+[/CNV/]:[FROM]:[TO]-[expression]
+</pre>
+
+<h2>Semantics</h2>
+<ul>
+<li>The expression is evaluated first</li>
+<li>The result must match the declared <code>FROM</code> type</li>
+<li>Conversion is applied to produce the <code>TO</code> type</li>
+<li>If mismatch or invalid conversion → runtime error</li>
+</ul>
+
+<h2>Supported Conversions</h2>
+<pre>
+INT ↔ DEC
+INT ↔ STR
+STR ↔ DEC
+STR → BOO
+BOO → STR
+</pre>
+
+<h2>Detailed Behavior</h2>
+
+<h3>STR → INT</h3>
+<ul>
+<li>String must contain only digits</li>
+</ul>
+
+<h3>STR → DEC</h3>
+<ul>
+<li>Must be valid numeric format</li>
+</ul>
+
+<h3>STR → BOO</h3>
+<ul>
+<li>Only "TRUE" or "FALSE" allowed</li>
+</ul>
+
+<h3>INT/DEC → STR</h3>
+<ul>
+<li>Converted using standard string representation</li>
+</ul>
+
+<h3>INT ↔ DEC</h3>
+<ul>
+<li>INT → DEC preserves value</li>
+<li>DEC → INT truncates fractional part</li>
+</ul>
+
+<h2>Examples</h2>
+<pre>
+[/CNV/]:[STR]:[INT]-["123"] → 123
+[/CNV/]:[INT]:[STR]-[10] → "10"
+[/CNV/]:[STR]:[BOO]-["TRUE"] → TRUE
+[/CNV/]:[DEC]:[INT]-[10.7] → 10
+</pre>
+
+<h2>Notes</h2>
+<ul>
+<li>All conversions are explicit</li>
+<li>No implicit coercion exists in the language</li>
+<li>Conversion must match declared source type exactly</li>
+</ul>
+
+</div>
+
+</body>
+</html>
