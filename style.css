@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    background: #000;
+    color: #00ff9c;
+    font-family: 'IBM Plex Mono', monospace;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid #00ff9c33;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar input {
+    width: 100%;
+    padding: 8px;
+    background: black;
+    border: 1px solid #00ff9c;
+    color: #00ff9c;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+/* Links */
+.sidebar a {
+    display: block;
+    color: #00ff9c;
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.sidebar a:hover {
+    background: #00ff9c22;
+}
+
+/* Main content */
+.main {
+    padding: 25px;
+    max-width: 900px;
+}
+
+/* Code blocks */
+pre {
+    background: #001a12;
+    padding: 12px;
+    border-left: 3px solid #00ff9c;
+    overflow-x: auto;
+}
+
+/* Scrollbar (optional aesthetic) */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00ff9c44;
+}
